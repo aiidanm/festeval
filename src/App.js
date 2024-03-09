@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
-import { GetAllPlaylists } from "./apiReqs";
+import { getAllPlaylists } from "./apiReqs";
 
 const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
@@ -39,11 +39,14 @@ function App() {
     window.localStorage.removeItem("token");
   };
 
-  const handleGetAllPlaylists = () => {
-    GetAllPlaylists.then((data) => {
-      setPlaylistData(data);
-      console.log(playlistData)
+  const parsePlaylists = (rawPlaylists) => {
+    return rawPlaylists.map((playlist) => {
+      return [playlist.name, playlist.id];
     });
+  };
+
+  const handleGetAllPlaylists = () => {
+    getAllPlaylists(token).then((data) => console.log(parsePlaylists(data)));
   };
 
   return (
