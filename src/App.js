@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
-import { getAllPlaylists } from "./apiReqs";
+import { getAllPlaylists, getLikedSongs } from "./apiReqs";
 
 const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
@@ -45,6 +45,10 @@ function App() {
     });
   };
 
+  const handleGetLikedSongs = () => {
+    getLikedSongs(token).then((data) => console.log(data));
+  };
+
   const handleGetAllPlaylists = () => {
     getAllPlaylists(token).then((data) => console.log(parsePlaylists(data)));
   };
@@ -59,7 +63,7 @@ function App() {
           Login to Spotify
         </a>
         <button onClick={logout}>Logout</button>
-        <button onClick={handleGetAllPlaylists}>Get all playlists info</button>
+        <button onClick={handleGetLikedSongs}>Get all playlists info</button>
       </div>
     </div>
   );
