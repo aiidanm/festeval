@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
-import { getAllPlaylists, getLikedSongs } from "./apiReqs";
+import { getAllPlaylists, getLikedSongs, getPlaylistsSongs } from "./apiReqs";
 
 const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
@@ -13,7 +13,8 @@ function App() {
   const { clientID, setClientID } = useState("");
   const { code, setCode } = useState("");
   const [token, setToken] = useState("");
-  const [playlistData, setPlaylistData] = useState("");
+  const [playlistData, setPlaylistData] = useState();
+  const [selectedPlaylist, setSelectedPlaylist] = useState();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -31,7 +32,6 @@ function App() {
     }
 
     setToken(token);
-    console.log(token);
   }, []);
 
   const logout = () => {
@@ -50,7 +50,25 @@ function App() {
   };
 
   const handleGetAllPlaylists = () => {
-    getAllPlaylists(token).then((data) => console.log(parsePlaylists(data)));
+    getAllPlaylists(token).then((data) =>
+      setPlaylistData(parsePlaylists(data))
+    );
+  };
+
+  const handleChange = (e) => {
+    setSelectedPlaylist(e.target.value);
+  };
+
+  const parseTracks = (tracks) => {
+    tracks.map((track) => {
+      return track.track.artists[0].name
+    });
+  };
+
+  const handleFind = (e) => {
+    getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
+      parseTracks(tracks);
+    });
   };
 
   return (
@@ -63,7 +81,15 @@ function App() {
           Login to Spotify
         </a>
         <button onClick={logout}>Logout</button>
-        <button onClick={handleGetLikedSongs}>Get all playlists info</button>
+        <button onClick={handleGetAllPlaylists}>Get all playlists info</button>
+        <select name="playlists" id="playlists" onChange={handleChange}>
+          {playlistData
+            ? playlistData.map((playlist) => {
+                return <option value={playlist[1]}>{`${playlist[0]}`}</option>;
+              })
+            : null}
+        </select>
+        <button onClick={handleFind}>Find artists playing at glasto</button>
       </div>
     </div>
   );

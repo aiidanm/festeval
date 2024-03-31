@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getLikedSongs(token) {
-  console.log(token)
+  console.log(token);
   return axios
     .get("https://api.spotify.com/v1/me/tracks/", {
       headers: {
@@ -14,7 +14,6 @@ export function getLikedSongs(token) {
 }
 
 export function getAllPlaylists(token) {
-  console.log(token)
   return axios
     .get("https://api.spotify.com/v1/me/playlists/", {
       headers: {
@@ -26,5 +25,18 @@ export function getAllPlaylists(token) {
     })
     .then((data) => {
       return data.data.items;
+    });
+}
+
+export function getPlaylistsSongs(token, playlistCode) {
+  console.log(playlistCode);
+  return axios
+    .get(`https://api.spotify.com/v1/playlists/${playlistCode}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((data) => {
+      return data.data.tracks.items
     });
 }
