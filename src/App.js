@@ -20,6 +20,7 @@ function App() {
   const [token, setToken] = useState("");
   const [playlistData, setPlaylistData] = useState();
   const [selectedPlaylist, setSelectedPlaylist] = useState();
+  const lineup = require("./Glasto.json")
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -35,8 +36,10 @@ function App() {
       window.location.hash = "";
       window.localStorage.setItem("token", token);
     }
-
     setToken(token);
+
+    console.log(lineup)
+    
   }, []);
 
   const logout = () => {

@@ -1,0 +1,748 @@
+{
+  "copyright": "Licensed under a Creative Commons Attribution-NonCommercial 3.0 License https://creativecommons.org/licenses/by-nc/3.0/. Free for non-commercial use. Contact halvin@clashfinder.com for other uses.",
+  "modified": "2024-04-18 08:14",
+  "name": "Glastonbury 2024",
+  "id": "g2024",
+  "url": "https://clashfinder.com/s/g2024/",
+  "printAdvisory": 5,
+  "timezone": "Europe/London",
+  "tzOffset": 3600,
+  "tzNote": "Start and end times are given in the timezone of the event. Offset by -tzOffset for UTC.",
+  "locations": [
+    {
+      "name": "Pyramid",
+      "events": [
+        {
+          "name": "Olivia Dean",
+          "short": "olivia(1)",
+          "start": "2024-06-28 13:30",
+          "end": "2024-06-28 14:30",
+          "mbId": "15e0d608-0869-429b-898d-3d8db3ecedd5"
+        },
+        {
+          "name": "Paul Heaton",
+          "short": "paulhe(1)",
+          "start": "2024-06-28 15:10",
+          "end": "2024-06-28 16:10",
+          "mbId": "ed652e25-7d55-42b3-a81c-cf31c6138d88"
+        },
+        {
+          "name": "Keane",
+          "short": "keane(1)",
+          "start": "2024-06-28 16:45",
+          "end": "2024-06-28 17:45",
+          "mbId": "7bd9e20e-74b9-446a-a2ed-a223f82a36e7"
+        },
+        {
+          "name": "PJ Harvey",
+          "short": "pjharv(1)",
+          "start": "2024-06-28 18:35",
+          "end": "2024-06-28 19:35"
+        },
+        {
+          "name": "LCD Soundsystem",
+          "short": "lcdsou(1)",
+          "start": "2024-06-28 20:20",
+          "end": "2024-06-28 21:20"
+        },
+        {
+          "name": "Dua Lipa",
+          "short": "dualip(1)",
+          "start": "2024-06-28 22:15",
+          "end": "2024-06-28 23:45"
+        },
+        {
+          "name": "Ayre Starr",
+          "short": "ayrest(1)",
+          "start": "2024-06-29 13:15",
+          "end": "2024-06-29 14:00"
+        },
+        {
+          "name": "Cyndi Lauper",
+          "short": "cyndil(1)",
+          "start": "2024-06-29 14:30",
+          "end": "2024-06-29 15:30",
+          "mbId": "c7020c6d-cae9-4db3-92a7-e5c561cbad50"
+        },
+        {
+          "name": "Seventeen",
+          "short": "sevent(1)",
+          "start": "2024-06-29 16:15",
+          "end": "2024-06-29 17:15",
+          "mbId": "e04d239e-9fa8-49b3-b9b7-9e439c3cb1d1"
+        },
+        {
+          "name": "Michael Kiwanuka",
+          "short": "michae(1)",
+          "start": "2024-06-29 18:00",
+          "end": "2024-06-29 19:00"
+        },
+        {
+          "name": "Little Simz",
+          "short": "little(1)",
+          "start": "2024-06-29 19:45",
+          "end": "2024-06-29 20:45"
+        },
+        {
+          "name": "Coldplay",
+          "short": "coldpl(1)",
+          "start": "2024-06-29 21:45",
+          "end": "2024-06-29 23:45"
+        },
+        {
+          "name": "Gabrielle",
+          "short": "gabrie(1)",
+          "start": "2024-06-30 12:15",
+          "end": "2024-06-30 13:15"
+        },
+        {
+          "name": "Paloma Faith",
+          "short": "paloma(1)",
+          "start": "2024-06-30 13:45",
+          "end": "2024-06-30 14:45"
+        },
+        {
+          "name": "Shania Twain",
+          "short": "shania(1)",
+          "start": "2024-06-30 15:30",
+          "end": "2024-06-30 17:00"
+        },
+        {
+          "name": "Janelle Monae",
+          "short": "janell(1)",
+          "start": "2024-06-30 17:45",
+          "end": "2024-06-30 18:45",
+          "mbId": "ee190f6b-7d98-43ec-b924-da5f8018eca0"
+        },
+        {
+          "name": "Burna Boy",
+          "short": "burnab(1)",
+          "start": "2024-06-30 19:30",
+          "end": "2024-06-30 20:30"
+        },
+        {
+          "name": "SZA",
+          "short": "sza(1)",
+          "start": "2024-06-30 21:30",
+          "end": "2024-06-30 23:00"
+        }
+      ]
+    },
+    {
+      "name": "Other Stage",
+      "events": [
+        {
+          "name": "Confidence Man",
+          "short": "confid(1)",
+          "start": "2024-06-28 14:15",
+          "end": "2024-06-28 15:15",
+          "mbId": "9fab430a-f1af-4a69-bf68-6857a7a50a68"
+        },
+        {
+          "name": "TBA",
+          "short": "tba(1)",
+          "start": "2024-06-28 15:45",
+          "end": "2024-06-28 16:45"
+        },
+        {
+          "name": "Bombay Bicycle Club",
+          "short": "bombay1(1)",
+          "start": "2024-06-28 17:15",
+          "end": "2024-06-28 18:15",
+          "mbId": "0ae49abe-d6af-44fa-8ab0-b9ace5690e6f"
+        },
+        {
+          "name": "Anne-Marie",
+          "short": "annema(1)",
+          "start": "2024-06-28 18:45",
+          "end": "2024-06-28 19:45",
+          "mbId": "e3d5b5ec-101a-4529-9f2d-01dca64cf44e"
+        },
+        {
+          "name": "D-Block Europe",
+          "short": "dblock(1)",
+          "start": "2024-06-28 20:30",
+          "end": "2024-06-28 21:30",
+          "mbId": "3325cdfa-8efc-4662-b3df-c094b78b9da8"
+        },
+        {
+          "name": "IDLES",
+          "short": "idles(1)",
+          "start": "2024-06-28 22:30",
+          "end": "2024-06-28 23:45"
+        },
+        {
+          "name": "The Last Dinner Party",
+          "short": "lastdi(1)",
+          "start": "2024-06-29 16:00",
+          "end": "2024-06-29 17:00"
+        },
+        {
+          "name": "Bloc Party",
+          "short": "blocpa(1)",
+          "start": "2024-06-29 17:30",
+          "end": "2024-06-29 18:30",
+          "mbId": "8c538f11-c141-4588-8ecb-931083524186"
+        },
+        {
+          "name": "Camila Cabello",
+          "short": "camila(1)",
+          "start": "2024-06-29 19:00",
+          "end": "2024-06-29 20:00",
+          "mbId": "01b8b5bf-06cb-45da-85fb-61ada72fcd69"
+        },
+        {
+          "name": "The Streets",
+          "short": "street(1)",
+          "start": "2024-06-29 20:45",
+          "end": "2024-06-29 21:45"
+        },
+        {
+          "name": "Disclosure",
+          "short": "disclo(1)",
+          "start": "2024-06-29 22:30",
+          "end": "2024-06-29 23:45"
+        },
+        {
+          "name": "Nothing But Thieves",
+          "short": "nothin(1)",
+          "start": "2024-06-30 15:00",
+          "end": "2024-06-30 16:00"
+        },
+        {
+          "name": "Avril Lavigne",
+          "short": "avrill(1)",
+          "start": "2024-06-30 18:00",
+          "end": "2024-06-30 19:00"
+        },
+        {
+          "name": "Two Door Cinema Club",
+          "short": "twodoo(1)",
+          "start": "2024-06-30 19:45",
+          "end": "2024-06-30 20:45"
+        },
+        {
+          "name": "The National",
+          "short": "nation(1)",
+          "start": "2024-06-30 21:45",
+          "end": "2024-06-30 23:15"
+        }
+      ]
+    },
+    {
+      "name": "West Holts",
+      "events": [
+        {
+          "name": "Sofia Kourtesis",
+          "short": "sofiak(1)",
+          "start": "2024-06-28 14:30",
+          "end": "2024-06-28 15:30"
+        },
+        {
+          "name": "Squid",
+          "short": "squid(1)",
+          "start": "2024-06-28 16:00",
+          "end": "2024-06-28 17:00"
+        },
+        {
+          "name": "Sugababes",
+          "short": "sugaba(1)",
+          "start": "2024-06-28 17:30",
+          "end": "2024-06-28 18:30"
+        },
+        {
+          "name": "Danny Brown",
+          "short": "dannyb(1)",
+          "start": "2024-06-28 19:00",
+          "end": "2024-06-28 20:00"
+        },
+        {
+          "name": "Heilung",
+          "short": "heilun(1)",
+          "start": "2024-06-28 20:30",
+          "end": "2024-06-28 21:30"
+        },
+        {
+          "name": "Jungle",
+          "short": "jungle(1)",
+          "start": "2024-06-28 22:15",
+          "end": "2024-06-28 23:45"
+        },
+        {
+          "name": "Corinne Bailey Rae",
+          "short": "corinn(1)",
+          "start": "2024-06-29 14:30",
+          "end": "2024-06-29 15:30"
+        },
+        {
+          "name": "Noname",
+          "short": "noname(1)",
+          "start": "2024-06-29 16:00",
+          "end": "2024-06-29 17:00",
+          "mbId": "6bea93d9-08e8-40af-974e-b7d066b2e0fb"
+        },
+        {
+          "name": "Nitin Sawhney",
+          "short": "nitins(1)",
+          "start": "2024-06-29 17:30",
+          "end": "2024-06-29 18:30"
+        },
+        {
+          "name": "Black Pumas",
+          "short": "blackp(1)",
+          "start": "2024-06-29 19:00",
+          "end": "2024-06-29 20:00"
+        },
+        {
+          "name": "Masego",
+          "short": "masego(1)",
+          "start": "2024-06-29 20:30",
+          "end": "2024-06-29 21:30"
+        },
+        {
+          "name": "Jessie Ware",
+          "short": "jessie(1)",
+          "start": "2024-06-29 22:15",
+          "end": "2024-06-29 23:30"
+        },
+        {
+          "name": "Steel Pulse",
+          "short": "steelp(1)",
+          "start": "2024-06-30 14:00",
+          "end": "2024-06-30 15:00"
+        },
+        {
+          "name": "Cymande",
+          "short": "cymand(1)",
+          "start": "2024-06-30 15:30",
+          "end": "2024-06-30 16:30"
+        },
+        {
+          "name": "Jordan Rakei",
+          "short": "jordan(1)",
+          "start": "2024-06-30 17:00",
+          "end": "2024-06-30 18:00"
+        },
+        {
+          "name": "Brittany Howard",
+          "short": "britta(1)",
+          "start": "2024-06-30 18:30",
+          "end": "2024-06-30 19:30"
+        },
+        {
+          "name": "Nia Archives",
+          "short": "niaarc(1)",
+          "start": "2024-06-30 20:00",
+          "end": "2024-06-30 21:00"
+        },
+        {
+          "name": "Justice",
+          "short": "justic(1)",
+          "start": "2024-06-30 21:45",
+          "end": "2024-06-30 23:15"
+        }
+      ]
+    },
+    {
+      "name": "Woodsies",
+      "events": [
+        {
+          "name": "Declan McKenna",
+          "short": "declan(1)",
+          "start": "2024-06-28 19:30",
+          "end": "2024-06-28 20:30"
+        },
+        {
+          "name": "Sampha",
+          "short": "sampha(1)",
+          "start": "2024-06-28 21:00",
+          "end": "2024-06-28 22:00"
+        },
+        {
+          "name": "Jamie XX",
+          "short": "jamiex(1)",
+          "start": "2024-06-28 22:30",
+          "end": "2024-06-28 23:45"
+        },
+        {
+          "name": "TBA",
+          "short": "tba(2)",
+          "start": "2024-06-29 18:00",
+          "end": "2024-06-29 19:00"
+        },
+        {
+          "name": "Yard Act",
+          "short": "yardac(1)",
+          "start": "2024-06-29 19:30",
+          "end": "2024-06-29 20:30"
+        },
+        {
+          "name": "Sleaford Mods",
+          "short": "sleafo(1)",
+          "start": "2024-06-29 21:00",
+          "end": "2024-06-29 22:00"
+        },
+        {
+          "name": "Gossip",
+          "short": "gossip(1)",
+          "start": "2024-06-29 22:30",
+          "end": "2024-06-29 23:45"
+        },
+        {
+          "name": "Blondshell",
+          "short": "blonds(1)",
+          "start": "2024-06-30 15:30",
+          "end": "2024-06-30 16:30"
+        },
+        {
+          "name": "Alvvays",
+          "short": "alvvay(1)",
+          "start": "2024-06-30 17:00",
+          "end": "2024-06-30 18:00"
+        },
+        {
+          "name": "Arlo Parks",
+          "short": "arlopa(1)",
+          "start": "2024-06-30 18:30",
+          "end": "2024-06-30 19:30"
+        },
+        {
+          "name": "Romy",
+          "short": "romy(1)",
+          "start": "2024-06-30 20:00",
+          "end": "2024-06-30 21:00"
+        },
+        {
+          "name": "James Blake",
+          "short": "jamesb(1)",
+          "start": "2024-06-30 21:30",
+          "end": "2024-06-30 22:45"
+        }
+      ]
+    },
+    {
+      "name": "The Park",
+      "events": [
+        {
+          "name": "Barry Can't Swim",
+          "short": "barryc(1)",
+          "start": "2024-06-28 14:00",
+          "end": "2024-06-28 14:45"
+        },
+        {
+          "name": "The Mary Wallopers",
+          "short": "marywa(1)",
+          "start": "2024-06-28 15:15",
+          "end": "2024-06-28 16:15"
+        },
+        {
+          "name": "This Is The Kit",
+          "short": "thisis(1)",
+          "start": "2024-06-28 16:45",
+          "end": "2024-06-28 17:45"
+        },
+        {
+          "name": "Dexys",
+          "short": "dexys(1)",
+          "start": "2024-06-28 18:15",
+          "end": "2024-06-28 19:15"
+        },
+        {
+          "name": "Aurora",
+          "short": "aurora(1)",
+          "start": "2024-06-28 19:45",
+          "end": "2024-06-28 20:45"
+        },
+        {
+          "name": "King Krule",
+          "short": "kingkr(1)",
+          "start": "2024-06-28 21:15",
+          "end": "2024-06-28 22:15"
+        },
+        {
+          "name": "Fontaines DC",
+          "short": "fontai(1)",
+          "start": "2024-06-28 23:00",
+          "end": "2024-06-29 00:15"
+        },
+        {
+          "name": "Lankum",
+          "short": "lankum(1)",
+          "start": "2024-06-29 18:15",
+          "end": "2024-06-29 19:15"
+        },
+        {
+          "name": "The Breeders",
+          "short": "breede(1)",
+          "start": "2024-06-29 19:45",
+          "end": "2024-06-29 20:45"
+        },
+        {
+          "name": "Ghetts",
+          "short": "ghetts(1)",
+          "start": "2024-06-29 21:15",
+          "end": "2024-06-29 22:15"
+        },
+        {
+          "name": "Peggy Gou",
+          "short": "peggyg(1)",
+          "start": "2024-06-29 23:00",
+          "end": "2024-06-30 00:15"
+        },
+        {
+          "name": "Mdou Moctar",
+          "short": "mdoumo(1)",
+          "start": "2024-06-30 15:15",
+          "end": "2024-06-30 16:15"
+        },
+        {
+          "name": "Baxter Dury",
+          "short": "baxter(1)",
+          "start": "2024-06-30 16:45",
+          "end": "2024-06-30 17:45"
+        },
+        {
+          "name": "Mount Kimbie",
+          "short": "mountk(1)",
+          "start": "2024-06-30 18:15",
+          "end": "2024-06-30 19:15"
+        },
+        {
+          "name": "Orbital",
+          "short": "orbita(1)",
+          "start": "2024-06-30 19:45",
+          "end": "2024-06-30 20:45",
+          "mbId": "f3e2a7d9-c6bb-4848-95e5-04c0a1e2f511"
+        },
+        {
+          "name": "London Grammar",
+          "short": "london(1)",
+          "start": "2024-06-30 21:15",
+          "end": "2024-06-30 22:30"
+        }
+      ]
+    },
+    {
+      "name": "Acoustic",
+      "events": [
+        {
+          "name": "The Burma",
+          "short": "burma(1)",
+          "start": "2024-06-28 11:30",
+          "end": "2024-06-28 12:00"
+        },
+        {
+          "name": "John Smith",
+          "short": "johnsm(1)",
+          "start": "2024-06-28 12:10",
+          "end": "2024-06-28 12:40"
+        },
+        {
+          "name": "Angie McMahon",
+          "short": "angiem(1)",
+          "start": "2024-06-28 13:00",
+          "end": "2024-06-28 13:40"
+        },
+        {
+          "name": "Josh Rouse",
+          "short": "joshro(1)",
+          "start": "2024-06-28 14:00",
+          "end": "2024-06-28 14:40"
+        },
+        {
+          "name": "Red Hot Chilli Pipers",
+          "short": "redhot(1)",
+          "start": "2024-06-28 15:00",
+          "end": "2024-06-28 15:40"
+        },
+        {
+          "name": "Stornoway",
+          "short": "storno(1)",
+          "start": "2024-06-28 16:00",
+          "end": "2024-06-28 16:40"
+        },
+        {
+          "name": "Dervish",
+          "short": "dervis(1)",
+          "start": "2024-06-28 17:00",
+          "end": "2024-06-28 18:00"
+        },
+        {
+          "name": "Tanita Tikaram",
+          "short": "tanita(1)",
+          "start": "2024-06-28 18:30",
+          "end": "2024-06-28 19:30"
+        },
+        {
+          "name": "Scouting For Girls",
+          "short": "scouti(1)",
+          "start": "2024-06-28 20:00",
+          "end": "2024-06-28 21:00"
+        },
+        {
+          "name": "The Bootleg Beatles",
+          "short": "bootle(1)",
+          "start": "2024-06-28 21:30",
+          "end": "2024-06-28 22:30"
+        },
+        {
+          "name": "Jada Star",
+          "short": "jadast(1)",
+          "start": "2024-06-29 11:30",
+          "end": "2024-06-29 12:00"
+        },
+        {
+          "name": "Ryan McMullen",
+          "short": "ryanmc(1)",
+          "start": "2024-06-29 12:10",
+          "end": "2024-06-29 12:40"
+        },
+        {
+          "name": "Jessie Reid",
+          "short": "jessie1(1)",
+          "start": "2024-06-29 13:00",
+          "end": "2024-06-29 13:40"
+        },
+        {
+          "name": "Paul Casey",
+          "short": "paulca(1)",
+          "start": "2024-06-29 14:00",
+          "end": "2024-06-29 14:40"
+        },
+        {
+          "name": "Fun Lovin' Crime Writers",
+          "short": "funlov(1)",
+          "start": "2024-06-29 15:00",
+          "end": "2024-06-29 15:40"
+        },
+        {
+          "name": "Albert Lee",
+          "short": "albert(1)",
+          "start": "2024-06-29 16:00",
+          "end": "2024-06-29 16:40"
+        },
+        {
+          "name": "The Manfreds",
+          "short": "manfre(1)",
+          "start": "2024-06-29 17:00",
+          "end": "2024-06-29 18:00"
+        },
+        {
+          "name": "Russell Crowe's Indoor Garden Party",
+          "short": "russel(1)",
+          "start": "2024-06-29 18:30",
+          "end": "2024-06-29 19:30"
+        },
+        {
+          "name": "Ralph McTell",
+          "short": "ralphm(1)",
+          "start": "2024-06-29 20:00",
+          "end": "2024-06-29 21:00"
+        },
+        {
+          "name": "Ocean Colour Scene",
+          "short": "oceanc(1)",
+          "start": "2024-06-29 21:30",
+          "end": "2024-06-29 22:45"
+        },
+        {
+          "name": "Toby Lee",
+          "short": "tobyle(1)",
+          "start": "2024-06-30 11:30",
+          "end": "2024-06-30 12:00"
+        },
+        {
+          "name": "Frankie Archer",
+          "short": "franki(1)",
+          "start": "2024-06-30 12:10",
+          "end": "2024-06-30 12:40"
+        },
+        {
+          "name": "ETC Finalist",
+          "short": "etcfin(1)",
+          "start": "2024-06-30 13:00",
+          "end": "2024-06-30 13:40"
+        },
+        {
+          "name": "Grace Petrie",
+          "short": "gracep(1)",
+          "start": "2024-06-30 14:00",
+          "end": "2024-06-30 14:40"
+        },
+        {
+          "name": "Michele Stodart",
+          "short": "michel(1)",
+          "start": "2024-06-30 15:00",
+          "end": "2024-06-30 15:40"
+        },
+        {
+          "name": "Bernard Butler",
+          "short": "bernar(1)",
+          "start": "2024-06-30 16:00",
+          "end": "2024-06-30 16:40",
+          "mbId": "315d8368-f294-4911-967e-a96a7c2172af"
+        },
+        {
+          "name": "Songwriters Arc",
+          "short": "songwr(1)",
+          "start": "2024-06-30 17:00",
+          "end": "2024-06-30 18:00"
+        },
+        {
+          "name": "London Gospel Community Choir",
+          "short": "london1(1)",
+          "start": "2024-06-30 18:30",
+          "end": "2024-06-30 19:30"
+        },
+        {
+          "name": "Judy Collins",
+          "short": "judyco(1)",
+          "start": "2024-06-30 20:00",
+          "end": "2024-06-30 21:00"
+        },
+        {
+          "name": "Gipsy Kings",
+          "short": "gipsyk(1)",
+          "start": "2024-06-30 21:30",
+          "end": "2024-06-30 22:45"
+        }
+      ]
+    },
+    {
+      "name": "Avalon",
+      "events": [
+        {
+          "name": "Frank Turner",
+          "short": "frankt(1)",
+          "start": "2024-06-28 16:00",
+          "end": "2024-06-28 17:00"
+        },
+        {
+          "name": "Kate Nash",
+          "short": "katena(1)",
+          "start": "2024-06-28 21:15",
+          "end": "2024-06-28 22:15"
+        },
+        {
+          "name": "Skindred",
+          "short": "skindr(1)",
+          "start": "2024-06-28 23:00",
+          "end": "2024-06-29 00:15"
+        },
+        {
+          "name": "BC Camplight",
+          "short": "bccamp(1)",
+          "start": "2024-06-29 19:00",
+          "end": "2024-06-29 20:00",
+          "mbId": "52f612c7-9388-47aa-a3de-494d673671ac"
+        },
+        {
+          "name": "New Model Army",
+          "short": "newmod(1)",
+          "start": "2024-06-29 23:00",
+          "end": "2024-06-30 00:15"
+        }
+      ]
+    }
+  ]
+}
