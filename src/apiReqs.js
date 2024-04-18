@@ -37,6 +37,12 @@ export function getPlaylistsSongs(token, playlistCode) {
       },
     })
     .then((data) => {
-      return data.data.tracks.items
+      return data.data.tracks.items;
     });
+}
+
+export function getClashFinder() {
+  return axios
+    .get(`https://clashfinder.com/m/g2024/?user=14ar4g.s4`)
+    .then((data) => console.log(data));
 }

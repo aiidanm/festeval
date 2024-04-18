@@ -2,7 +2,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
-import { getAllPlaylists, getLikedSongs, getPlaylistsSongs } from "./apiReqs";
+import {
+  getAllPlaylists,
+  getLikedSongs,
+  getPlaylistsSongs,
+  getClashFinder,
+} from "./apiReqs";
 
 const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
@@ -60,15 +65,19 @@ function App() {
   };
 
   const parseTracks = (tracks) => {
-    tracks.map((track) => {
-      return track.track.artists[0].name
+    return tracks.map((track) => {
+      return track.track.artists[0].name;
     });
   };
 
   const handleFind = (e) => {
     getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
-      parseTracks(tracks);
+      console.log(parseTracks(tracks));
     });
+  };
+
+  const getGlastoArtists = () => {
+    return getClashFinder();
   };
 
   return (
@@ -90,6 +99,7 @@ function App() {
             : null}
         </select>
         <button onClick={handleFind}>Find artists playing at glasto</button>
+        <button onClick={getGlastoArtists}>Get lineup</button>
       </div>
     </div>
   );
