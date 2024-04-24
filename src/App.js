@@ -9,6 +9,8 @@ import {
   getClashFinder,
 } from "./apiReqs";
 
+import glastoData from "./Glasto.json";
+
 const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -20,11 +22,28 @@ function App() {
   const [token, setToken] = useState("");
   const [playlistData, setPlaylistData] = useState();
   const [selectedPlaylist, setSelectedPlaylist] = useState();
-  const lineup = require("./Glasto.json")
+  const [finalArtists, setFinalArtists] = useState({});
+  const [mySongs, setMySongs] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
+    const artists = {};
+
+    glastoData.locations.forEach((location) => {
+      location.events.forEach((event) => {
+        const artistName = event.name;
+        const artistInfo = {
+          short: event.short,
+          start: event.start,
+          end: event.end,
+          mbId: event.mbId || null,
+          stage: location.name,
+        };
+
+        artists[artistName] = artistInfo;
+      });
+    });
 
     if (!token && hash) {
       token = hash
@@ -38,8 +57,7 @@ function App() {
     }
     setToken(token);
 
-    console.log(lineup)
-    
+    setFinalArtists(artists);
   }, []);
 
   const logout = () => {
@@ -75,12 +93,19 @@ function App() {
 
   const handleFind = (e) => {
     getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
-      console.log(parseTracks(tracks));
+      setMySongs(parseTracks(tracks));
     });
   };
 
-  const getGlastoArtists = () => {
-    return getClashFinder();
+  const compareLists = (e) => {
+    const filteredKeys = Object.keys(finalArtists).filter((key) =>
+      mySongs.includes(key)
+    );
+    const filteredObjects = filteredKeys.map((key) => ({
+      name: key,
+      info: finalArtists[key],
+    }));
+    console.log(filteredObjects);
   };
 
   return (
@@ -101,8 +126,8 @@ function App() {
               })
             : null}
         </select>
-        <button onClick={handleFind}>Find artists playing at glasto</button>
-        <button onClick={getGlastoArtists}>Get lineup</button>
+        <button onClick={handleFind}>load playlists songs</button>
+        <button onClick={compareLists}>Find artists playing at glasto</button>
       </div>
     </div>
   );
