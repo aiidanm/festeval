@@ -24,6 +24,8 @@ function App() {
   const [selectedPlaylist, setSelectedPlaylist] = useState();
   const [finalArtists, setFinalArtists] = useState({});
   const [mySongs, setMySongs] = useState([]);
+  const [myGlastoArtists, setMyGlastoArtists] = useState([])
+
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -59,6 +61,19 @@ function App() {
 
     setFinalArtists(artists);
   }, []);
+
+  useEffect(() => {
+    if (mySongs.length !== 0) {
+      const filteredKeys = Object.keys(finalArtists).filter((key) =>
+        mySongs.includes(key)
+      );
+      const filteredObjects = filteredKeys.map((key) => ({
+        name: key,
+        info: finalArtists[key],
+      }));
+      setMyGlastoArtists(filteredObjects)
+    }
+  }, [mySongs]);
 
   const logout = () => {
     setToken("");
@@ -98,36 +113,48 @@ function App() {
   };
 
   const compareLists = (e) => {
-    const filteredKeys = Object.keys(finalArtists).filter((key) =>
-      mySongs.includes(key)
-    );
-    const filteredObjects = filteredKeys.map((key) => ({
-      name: key,
-      info: finalArtists[key],
-    }));
-    console.log(filteredObjects);
+    getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
+      setMySongs(parseTracks(tracks));
+    });
   };
 
   return (
     <div className="App">
       <div className="mainContainer">
         <h1>Festeval</h1>
-        <a
-          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-        >
-          Login to Spotify
-        </a>
-        <button onClick={logout}>Logout</button>
-        <button onClick={handleGetAllPlaylists}>Get all playlists info</button>
-        <select name="playlists" id="playlists" onChange={handleChange}>
-          {playlistData
-            ? playlistData.map((playlist) => {
-                return <option value={playlist[1]}>{`${playlist[0]}`}</option>;
-              })
-            : null}
-        </select>
-        <button onClick={handleFind}>load playlists songs</button>
-        <button onClick={compareLists}>Find artists playing at glasto</button>
+
+        {window.localStorage.getItem("token") !== null ? (
+          <>
+            <button onClick={logout}>Logout</button>
+            <div>
+              
+
+              {playlistData ? (
+                <>
+                Select which playlist you want to find artists from!
+                <select name="playlists" id="playlists" onChange={handleChange}>
+                  {playlistData.map((playlist) => {
+                    return (
+                      <option value={playlist[1]}>{`${playlist[0]}`}</option>
+                    );
+                  })}
+                </select>
+                <button onClick={compareLists}>
+                Find artists playing at glasto
+              </button></>
+              ) : <button onClick={handleGetAllPlaylists}>Get my playlists!</button>}
+
+              
+            </div>
+            {myGlastoArtists ? <ul>{myGlastoArtists.map((artist) => <li>{artist.name}</li>)}</ul> : null}
+          </>
+        ) : (
+          <a
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          >
+            <button>Login to spotify</button>
+          </a>
+        )}
       </div>
     </div>
   );
