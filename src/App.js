@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import {
   getAllPlaylists,
@@ -15,6 +16,7 @@ const CLIENT_ID = "381df114364a4177b35739c970141a6b";
 const REDIRECT_URI = "http://localhost:3000";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
+const SCOPE = "user-read-private"
 
 function App() {
   const { clientID, setClientID } = useState("");
@@ -31,6 +33,7 @@ function App() {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     const artists = {};
+    console.log(token)
 
     glastoData.locations.forEach((location) => {
       location.events.forEach((event) => {
@@ -75,6 +78,20 @@ function App() {
     }
   }, [mySongs]);
 
+  const handleLogin = () => {
+   
+
+    return axios 
+      .get("https://accounts.spotify.com/authorize"),{
+      params : {
+      response_type: "code",
+      client_id: CLIENT_ID,
+      scope: SCOPE,
+      redirect_uri: REDIRECT_URI,
+      }}
+  }
+
+
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
@@ -118,6 +135,8 @@ function App() {
     });
   };
 
+
+
   return (
     <div className="App">
       <div className="mainContainer">
@@ -149,13 +168,14 @@ function App() {
             {myGlastoArtists ? <ul>{myGlastoArtists.map((artist) => <li>{artist.name}</li>)}</ul> : null}
           </>
         ) : (
-          <a
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-          >
-            <button>Login to spotify</button>
-          </a>
+          // <a
+          //   href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}
+          // >
+            <button onClick={handleLogin}>Login to spotify</button>
+          // </a>
         )}
       </div>
+      <button onClick={handleGetLikedSongs}>Get liked songs</button>
     </div>
   );
 }

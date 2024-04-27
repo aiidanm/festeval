@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export function getLikedSongs(token) {
-  console.log(token);
   return axios
-    .get("https://api.spotify.com/v1/me/tracks/", {
+    .get("https://api.spotify.com/v1/me/tracks?limit=25", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -45,4 +44,10 @@ export function getClashFinder() {
   return axios
     .get(`https://clashfinder.com/m/g2024/?user=14ar4g.s4`)
     .then((data) => console.log(data));
+}
+
+export function login() {
+  return axios
+  .get("")
+
 }
