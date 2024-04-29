@@ -1,32 +1,29 @@
 import axios from "axios";
 
-
-
-
-export function getLikedSongs(token, offset = 0) {
-
-  return axios.get(`https://api.spotify.com/v1/me/tracks?limit=50&offset=${offset}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((response) => {
-    const likedTracks = response.data.items;
-    const nextOffset = offset + 50;
-
-    if (response.data.next) {
-      return getLikedSongs(token, nextOffset).then((nextTracks) => {
-        return likedTracks.concat(nextTracks);
-      });
-    } else {
-      return likedTracks;
-    }
-  })
+export function testServerApi() {
+  return axios.get("http://localhost:5000/login");
 }
 
+export function getLikedSongs(token, offset = 0) {
+  return axios
+    .get(`https://api.spotify.com/v1/me/tracks?limit=50&offset=${offset}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      const likedTracks = response.data.items;
+      const nextOffset = offset + 50;
 
-
-
-
+      if (response.data.next) {
+        return getLikedSongs(token, nextOffset).then((nextTracks) => {
+          return likedTracks.concat(nextTracks);
+        });
+      } else {
+        return likedTracks;
+      }
+    });
+}
 
 export function getAllPlaylists(token) {
   return axios

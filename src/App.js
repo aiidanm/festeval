@@ -8,6 +8,7 @@ import {
   getLikedSongs,
   getPlaylistsSongs,
   getClashFinder,
+  testServerApi,
 } from "./apiReqs";
 
 import glastoData from "./Glasto.json";
@@ -170,6 +171,7 @@ function App() {
         )}
       </div>
       <button onClick={handleGetLikedSongs}>Get liked songs</button>
+      <button onClick={testServerApi}>TEST SERVER </button>
     </div>
   );
 }
