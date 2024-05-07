@@ -30,10 +30,10 @@ function App() {
   const [myGlastoArtists, setMyGlastoArtists] = useState([]);
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_CLIENT_ID);
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     const artists = {};
-    console.log(token);
 
     glastoData.locations.forEach((location) => {
       location.events.forEach((event) => {
