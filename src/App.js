@@ -13,11 +13,11 @@ import {
 
 import glastoData from "./Glasto.json";
 
-const CLIENT_ID = "381df114364a4177b35739c970141a6b";
-const REDIRECT_URI = "http://localhost:3000";
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-const RESPONSE_TYPE = "token";
-const SCOPE = "user-library-read";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+const AUTH_ENDPOINT = process.env.REACT_APP_AUTH_ENDPOINT;
+const RESPONSE_TYPE = process.env.REACT_APP_RESPONSE_TYPE;
+const SCOPE = process.env.REACT_APP_SCOPE;
 
 function App() {
   const { clientID, setClientID } = useState("");
@@ -149,9 +149,13 @@ function App() {
                   </button>
                 </>
               ) : (
-                <button onClick={handleGetAllPlaylists}>
-                  Get my playlists!
-                </button>
+                <div>
+                  <button onClick={handleGetLikedSongs}>Get liked songs</button>
+
+                  <button onClick={handleGetAllPlaylists}>
+                    Get my playlists!
+                  </button>
+                </div>
               )}
             </div>
             {myGlastoArtists ? (
@@ -170,8 +174,6 @@ function App() {
           </a>
         )}
       </div>
-      <button onClick={handleGetLikedSongs}>Get liked songs</button>
-      <button onClick={testServerApi}>TEST SERVER </button>
     </div>
   );
 }
