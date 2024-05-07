@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export function testServerApi() {
-  return axios.get("http://localhost:5000/login");
+  return axios
+    .get("http://localhost:5000/login")
+    .then((res) => console.log(res));
 }
 
 export function getLikedSongs(token, offset = 0) {
