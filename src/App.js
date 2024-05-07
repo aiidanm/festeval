@@ -28,6 +28,7 @@ function App() {
   const [finalArtists, setFinalArtists] = useState({});
   const [mySongs, setMySongs] = useState([]);
   const [myGlastoArtists, setMyGlastoArtists] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     console.log(process.env.REACT_APP_CLIENT_ID);
@@ -164,6 +165,8 @@ function App() {
                   <li>{artist.name}</li>
                 ))}
               </ul>
+            ) : isLoading ? (
+              <h2>Please wait, loading...</h2>
             ) : null}
           </>
         ) : (
