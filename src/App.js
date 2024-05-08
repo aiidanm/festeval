@@ -156,6 +156,7 @@ function App() {
               ) : (
                 <div>
                   <button onClick={handleGetLikedSongs}>Get liked songs</button>
+                  {isLoading ? <h2>Loading stuff...</h2> : null}
 
                   <button onClick={handleGetAllPlaylists}>
                     Get my playlists!
@@ -169,9 +170,7 @@ function App() {
                   <li>{artist.name}</li>
                 ))}
               </ul>
-            ) : isLoading ? (
-              <h2>Please wait, loading...</h2>
-            ) : null}
+            ) : null }
           </>
         ) : (
           <a
