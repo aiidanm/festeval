@@ -122,59 +122,71 @@ function App() {
     });
   };
 
+  function isLoggedIn() {
+    return window.localStorage.getItem("token") !== null;
+  }
+
+  function LoggedInContent() {
+    return (
+      <>
+        <div className="buttonContainer">
+          <button onClick={logout}>Logout</button>
+          <button onClick={handleGetLikedSongs}>Get liked songs</button>
+        </div>
+
+        {myGlastoArtists ? (
+          <ArtistList />
+        ) : isLoading ? (
+          <h2>Please wait, loading...</h2>
+        ) : null}
+      </>
+    );
+  }
+
+  function PlaylistSelector() {
+    return (
+      <>
+        Select which playlist you want to find artists from!
+        <select name="playlists" id="playlists" onChange={handleChange}>
+          {playlistData.map((playlist) => (
+            <option key={playlist[1]} value={playlist[1]}>
+              {playlist[0]}
+            </option>
+          ))}
+        </select>
+        <button onClick={compareLists}>Find artists playing at glasto</button>
+      </>
+    );
+  }
+
+  function ArtistList() {
+    return (
+      <ul>
+        {myGlastoArtists.map((artist) => (
+          <li key={artist.id}>{artist.name}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  function LoginButton() {
+    return (
+      <a
+        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}
+      >
+        <button>Login to spotify</button>
+      </a>
+    );
+  }
+
   return (
     <div className="App">
       <div className="mainContainer">
-        <h1>Festeval</h1>
-
-        {window.localStorage.getItem("token") !== null ? (
-          <>
-            <button onClick={logout}>Logout</button>
-            <div>
-              {playlistData ? (
-                <>
-                  Select which playlist you want to find artists from!
-                  <select
-                    name="playlists"
-                    id="playlists"
-                    onChange={handleChange}
-                  >
-                    {playlistData.map((playlist) => {
-                      return (
-                        <option value={playlist[1]}>{`${playlist[0]}`}</option>
-                      );
-                    })}
-                  </select>
-                  <button onClick={compareLists}>
-                    Find artists playing at glasto
-                  </button>
-                </>
-              ) : (
-                <div>
-                  <button onClick={handleGetLikedSongs}>Get liked songs</button>
-
-                  <button onClick={handleGetAllPlaylists}>
-                    Get my playlists!
-                  </button>
-                </div>
-              )}
-            </div>
-            {myGlastoArtists ? (
-              <ul>
-                {myGlastoArtists.map((artist) => (
-                  <li>{artist.name}</li>
-                ))}
-              </ul>
-            ) : isLoading ? (
-              <h2>Please wait, loading...</h2>
-            ) : null}
-          </>
+        <h1 className="Festeval">Festeval</h1>
+        {isLoggedIn() ? (
+            <LoggedInContent />
         ) : (
-          <a
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}
-          >
-            <button>Login to spotify</button>
-          </a>
+          <LoginButton />
         )}
       </div>
     </div>
