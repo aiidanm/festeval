@@ -91,7 +91,11 @@ function App() {
   };
 
   const handleGetLikedSongs = () => {
-    getLikedSongs(token).then((data) => setMySongs(parseTracks(data)));
+    setIsLoading(true)
+    getLikedSongs(token).then((data) => {
+      setIsLoading(false)
+      setMySongs(parseTracks(data))
+    });
   };
 
   const handleGetAllPlaylists = () => {
