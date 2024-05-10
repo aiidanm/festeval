@@ -133,12 +133,13 @@ function App() {
           <button onClick={logout}>Logout</button>
           <button onClick={handleGetLikedSongs}>Get liked songs</button>
         </div>
-
+<div className="songList">
         {myGlastoArtists ? (
           <ArtistList />
         ) : isLoading ? (
           <h2>Please wait, loading...</h2>
         ) : null}
+        </div>
       </>
     );
   }
