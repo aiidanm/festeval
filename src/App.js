@@ -2,11 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
 
-import {
-  getAllPlaylists,
-  getLikedSongs,
-  getPlaylistsSongs,
-} from "./apiReqs";
+import { getAllPlaylists, getLikedSongs, getPlaylistsSongs } from "./apiReqs";
 
 import glastoData from "./Glasto.json";
 
@@ -87,13 +83,11 @@ function App() {
   };
 
   const handleGetLikedSongs = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     getLikedSongs(token).then((data) => {
-      setIsLoading(false)
-      setMySongs(parseTracks(data))
-    }
-    
-    );
+      setIsLoading(false);
+      setMySongs(parseTracks(data));
+    });
   };
 
   const handleGetAllPlaylists = () => {
@@ -136,9 +130,8 @@ function App() {
           <button onClick={handleGetLikedSongs}>Get liked songs</button>
         </div>
         <div className="songList">
-          {myGlastoArtists ? 
-            <ArtistList /> : null}
-            {isLoading ? <h3>working in background...</h3> : null}
+          {myGlastoArtists ? <ArtistList /> : null}
+          {isLoading ? <h3>working in background...</h3> : null}
         </div>
       </>
     );
@@ -184,9 +177,11 @@ function App() {
     <div className="App">
       <div className="mainContainer">
         <h1 className="Festeval">Festeval</h1>
-        <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>How to play?</h3>
+        <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>
+          How to play?
+        </h3>
         <Modal isOpen={openHowTo} onClose={() => setOpenHowTo(false)}>
-          <title>How to use</title>
+          <title>How to use this webapp</title>
           <p>
             Simply click the login button, link your spotify account and then
             click "get liked songs" this will then compare your liked songs
