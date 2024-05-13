@@ -23,7 +23,6 @@ function App() {
   const [openHowTo, setOpenHowTo] = useState(false);
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_CLIENT_ID);
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     const artists = {};
@@ -84,10 +83,12 @@ function App() {
 
   const handleGetLikedSongs = () => {
     setIsLoading(true);
-    getLikedSongs(token).then((data) => {
-      setIsLoading(false);
-      setMySongs(parseTracks(data));
-    });
+    getLikedSongs(token)
+      .then((data) => {
+        setIsLoading(false);
+        setMySongs(parseTracks(data));
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleGetAllPlaylists = () => {
@@ -157,7 +158,7 @@ function App() {
     return (
       <ul>
         {myGlastoArtists.map((artist) => (
-          <li key={artist.id}>{artist.name}</li>
+          <li key={artist.name}>{artist.name}</li>
         ))}
       </ul>
     );
