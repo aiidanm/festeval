@@ -10,8 +10,7 @@
 .mainContainer {
   margin: 0 auto;
   margin-top: 5%;
-  border: 5px solid black;
-  width: 30%;
+  width: 20%;
   height: 30%;
   outline: orange;
   text-align: center;
@@ -43,7 +42,6 @@ button:hover {
 
 .buttonContainer {
   height: 50%;
-  border: 2px solid black;
 }
 
 .songList {

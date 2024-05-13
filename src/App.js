@@ -1,14 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import Modal from "./components/popup";
 
 import {
   getAllPlaylists,
   getLikedSongs,
   getPlaylistsSongs,
-  getClashFinder,
-  testServerApi,
 } from "./apiReqs";
 
 import glastoData from "./Glasto.json";
@@ -20,8 +17,6 @@ const RESPONSE_TYPE = process.env.REACT_APP_RESPONSE_TYPE;
 const SCOPE = process.env.REACT_APP_SCOPE;
 
 function App() {
-  const { clientID, setClientID } = useState("");
-  const { code, setCode } = useState("");
   const [token, setToken] = useState("");
   const [playlistData, setPlaylistData] = useState();
   const [selectedPlaylist, setSelectedPlaylist] = useState();
@@ -29,6 +24,7 @@ function App() {
   const [mySongs, setMySongs] = useState([]);
   const [myGlastoArtists, setMyGlastoArtists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [openHowTo, setOpenHowTo] = useState(false);
 
   useEffect(() => {
     console.log(process.env.REACT_APP_CLIENT_ID);
@@ -91,7 +87,13 @@ function App() {
   };
 
   const handleGetLikedSongs = () => {
-    getLikedSongs(token).then((data) => setMySongs(parseTracks(data)));
+    setIsLoading(true)
+    getLikedSongs(token).then((data) => {
+      setIsLoading(false)
+      setMySongs(parseTracks(data))
+    }
+    
+    );
   };
 
   const handleGetAllPlaylists = () => {
@@ -133,12 +135,10 @@ function App() {
           <button onClick={logout}>Logout</button>
           <button onClick={handleGetLikedSongs}>Get liked songs</button>
         </div>
-<div className="songList">
-        {myGlastoArtists ? (
-          <ArtistList />
-        ) : isLoading ? (
-          <h2>Please wait, loading...</h2>
-        ) : null}
+        <div className="songList">
+          {myGlastoArtists ? 
+            <ArtistList /> : null}
+            {isLoading ? <h3>working in background...</h3> : null}
         </div>
       </>
     );
@@ -184,11 +184,28 @@ function App() {
     <div className="App">
       <div className="mainContainer">
         <h1 className="Festeval">Festeval</h1>
-        {isLoggedIn() ? (
-            <LoggedInContent />
-        ) : (
-          <LoginButton />
-        )}
+        <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>How to play?</h3>
+        <Modal isOpen={openHowTo} onClose={() => setOpenHowTo(false)}>
+          <title>How to use</title>
+          <p>
+            Simply click the login button, link your spotify account and then
+            click "get liked songs" this will then compare your liked songs
+            playlist on spotify with artists playing at glastonbury.
+          </p>
+          <p>It may take a few minutes but bear with it.</p>
+          <p>
+            Afterwards you will see a list of any artists you've liked that are
+            performing. click on these for more information such as stage, time
+            and which songs of theres you have liked.
+          </p>
+
+          <p>
+            We ask for permission to use some of your spotify account data, all
+            that happens in the background is pulling your playlists and then
+            the songs you have in the liked songs playlist{" "}
+          </p>
+        </Modal>
+        {isLoggedIn() ? <LoggedInContent /> : <LoginButton />}
       </div>
     </div>
   );
