@@ -2,8 +2,15 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
 
+import LoggedInContent from "./components/loggedinContent";
 import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
-import {parseTracks, parsePlaylists, handleGetLikedSongs,compareLists} from "./utilFunc"
+import {
+  parseTracks,
+  parsePlaylists,
+  compareLists,
+  parseGlastoData,
+  compareToGlasto,
+} from "./utilFunc";
 
 import glastoData from "./Glasto.json";
 
@@ -20,28 +27,12 @@ function App() {
   const [finalArtists, setFinalArtists] = useState({});
   const [mySongs, setMySongs] = useState([]);
   const [myGlastoArtists, setMyGlastoArtists] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [openHowTo, setOpenHowTo] = useState(false);
 
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
-    const artists = {};
-
-    glastoData.locations.forEach((location) => {
-      location.events.forEach((event) => {
-        const artistName = event.name;
-        const artistInfo = {
-          short: event.short,
-          start: event.start,
-          end: event.end,
-          mbId: event.mbId || null,
-          stage: location.name,
-        };
-
-        artists[artistName] = artistInfo;
-      });
-    });
+    const artists = parseGlastoData(glastoData);
 
     if (!token && hash) {
       token = hash
@@ -59,23 +50,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (mySongs.length !== 0) {
-      const filteredKeys = Object.keys(finalArtists).filter((key) =>
-        mySongs.includes(key)
-      );
-      const filteredObjects = filteredKeys.map((key) => ({
-        name: key,
-        info: finalArtists[key],
-      }));
-      setMyGlastoArtists(filteredObjects);
-    }
+    compareToGlasto(mySongs, finalArtists, setMyGlastoArtists);
   }, [mySongs]);
-
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
-
 
   const handleGetAllPlaylists = () => {
     getAllPlaylists(token).then((data) =>
@@ -87,33 +63,14 @@ function App() {
     setSelectedPlaylist(e.target.value);
   };
 
- 
-
   const handleFind = (e) => {
     getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
       setMySongs(parseTracks(tracks));
     });
   };
 
-  
-
   function isLoggedIn() {
     return window.localStorage.getItem("token") !== null;
-  }
-
-  function LoggedInContent() {
-    return (
-      <>
-        <div className="buttonContainer">
-          <button onClick={logout}>Logout</button>
-          <button onClick={handleGetLikedSongs(token, setIsLoading, setMySongs)}>Get liked songs</button>
-        </div>
-        <div className="songList">
-          {myGlastoArtists ? <ArtistList /> : null}
-          {isLoading ? <h3>working in background...</h3> : null}
-        </div>
-      </>
-    );
   }
 
   function PlaylistSelector() {
@@ -127,18 +84,10 @@ function App() {
             </option>
           ))}
         </select>
-        <button onClick={compareLists(token, selectedPlaylist, setMySongs)}>Find artists playing at glasto</button>
+        <button onClick={compareLists(token, selectedPlaylist, setMySongs)}>
+          Find artists playing at glasto
+        </button>
       </>
-    );
-  }
-
-  function ArtistList() {
-    return (
-      <ul>
-        {myGlastoArtists.map((artist) => (
-          <li key={artist.name}>{artist.name}</li>
-        ))}
-      </ul>
     );
   }
 
@@ -179,7 +128,16 @@ function App() {
             the songs you have in the liked songs playlist{" "}
           </p>
         </Modal>
-        {isLoggedIn() ? <LoggedInContent /> : <LoginButton />}
+        {isLoggedIn() ? (
+          <LoggedInContent
+            myGlastoArtists={myGlastoArtists}
+            setToken={setToken}
+            token={token}
+            setMySongs={setMySongs}
+          />
+        ) : (
+          <LoginButton />
+        )}
       </div>
     </div>
   );

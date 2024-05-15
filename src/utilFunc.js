@@ -32,5 +32,36 @@ const compareLists = (token, selectedPlaylist, setMySongs) => {
     });
   };
 
+  const parseGlastoData = (glastoData) => {
+    const artists = {};
+    glastoData.locations.forEach((location) => {
+        location.events.forEach((event) => {
+          const artistName = event.name;
+          const artistInfo = {
+            short: event.short,
+            start: event.start,
+            end: event.end,
+            mbId: event.mbId || null,
+            stage: location.name,
+          };
+  
+          artists[artistName] = artistInfo;
+        });
+      });
+      return artists
+  }
 
-  export {parseTracks, parsePlaylists, handleGetLikedSongs,compareLists}
+  const compareToGlasto = (mySongs, finalArtists, setMyGlastoArtists) => {
+    if (mySongs.length !== 0) {
+        const filteredKeys = Object.keys(finalArtists).filter((key) =>
+          mySongs.includes(key)
+        );
+        const filteredObjects = filteredKeys.map((key) => ({
+          name: key,
+          info: finalArtists[key],
+        }));
+        setMyGlastoArtists(filteredObjects);
+      }
+  }
+
+  export {parseTracks, parsePlaylists, handleGetLikedSongs,compareLists, parseGlastoData, compareToGlasto}
