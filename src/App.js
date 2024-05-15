@@ -2,7 +2,8 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
 
-import { getAllPlaylists, getLikedSongs, getPlaylistsSongs } from "./apiReqs";
+import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
+import {parseTracks, parsePlaylists, handleGetLikedSongs,compareLists} from "./utilFunc"
 
 import glastoData from "./Glasto.json";
 
@@ -75,21 +76,6 @@ function App() {
     window.localStorage.removeItem("token");
   };
 
-  const parsePlaylists = (rawPlaylists) => {
-    return rawPlaylists.map((playlist) => {
-      return [playlist.name, playlist.id];
-    });
-  };
-
-  const handleGetLikedSongs = () => {
-    setIsLoading(true);
-    getLikedSongs(token)
-      .then((data) => {
-        setIsLoading(false);
-        setMySongs(parseTracks(data));
-      })
-      .catch((err) => console.log(err));
-  };
 
   const handleGetAllPlaylists = () => {
     getAllPlaylists(token).then((data) =>
@@ -101,11 +87,7 @@ function App() {
     setSelectedPlaylist(e.target.value);
   };
 
-  const parseTracks = (tracks) => {
-    return tracks.map((track) => {
-      return track.track.artists[0].name;
-    });
-  };
+ 
 
   const handleFind = (e) => {
     getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
@@ -113,11 +95,7 @@ function App() {
     });
   };
 
-  const compareLists = (e) => {
-    getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
-      setMySongs(parseTracks(tracks));
-    });
-  };
+  
 
   function isLoggedIn() {
     return window.localStorage.getItem("token") !== null;
@@ -128,7 +106,7 @@ function App() {
       <>
         <div className="buttonContainer">
           <button onClick={logout}>Logout</button>
-          <button onClick={handleGetLikedSongs}>Get liked songs</button>
+          <button onClick={handleGetLikedSongs(token, setIsLoading, setMySongs)}>Get liked songs</button>
         </div>
         <div className="songList">
           {myGlastoArtists ? <ArtistList /> : null}
@@ -149,7 +127,7 @@ function App() {
             </option>
           ))}
         </select>
-        <button onClick={compareLists}>Find artists playing at glasto</button>
+        <button onClick={compareLists(token, selectedPlaylist, setMySongs)}>Find artists playing at glasto</button>
       </>
     );
   }
@@ -177,7 +155,7 @@ function App() {
   return (
     <div className="App">
       <div className="mainContainer">
-        <h1 className="Festeval">Festeval</h1>
+        <h1 className="Festeval">Testing</h1>
         <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>
           How to play?
         </h3>
