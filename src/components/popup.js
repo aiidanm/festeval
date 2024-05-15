@@ -27,17 +27,34 @@ const ModalContent = styled.div`
   gap: 1rem;
 `;
 
-
 const Modal = ({ isOpen, onClose, children }) => {
-    if (!isOpen) return null;
-  
-    return (
-      <ModalOverlay onClick={onClose}>
-        <ModalContent onClick={(e) => e.stopPropagation()}>
-          {children}
-        </ModalContent>
-      </ModalOverlay>
-    );
-  };
-  
-  export default Modal;
+  if (!isOpen) return null;
+
+  return (
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        {children}
+        <title>How to use this webapp</title>
+        <p>
+          Simply click the login button, link your spotify account and then
+          click "get liked songs" this will then compare your liked songs
+          playlist on spotify with artists playing at glastonbury.
+        </p>
+        <p>It may take a few minutes but bear with it.</p>
+        <p>
+          Afterwards you will see a list of any artists you've liked that are
+          performing. click on these for more information such as stage, time
+          and which songs of theres you have liked.
+        </p>
+
+        <p>
+          We ask for permission to use some of your spotify account data, all
+          that happens in the background is pulling your playlists and then the
+          songs you have in the liked songs playlist{" "}
+        </p>
+      </ModalContent>
+    </ModalOverlay>
+  );
+};
+
+export default Modal;

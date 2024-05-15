@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
 
 import LoggedInContent from "./components/loggedinContent";
+import LoginButton from "./components/LoginButton";
 import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
 import {
   parseTracks,
@@ -13,12 +14,6 @@ import {
 } from "./utilFunc";
 
 import glastoData from "./Glasto.json";
-
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-const AUTH_ENDPOINT = process.env.REACT_APP_AUTH_ENDPOINT;
-const RESPONSE_TYPE = process.env.REACT_APP_RESPONSE_TYPE;
-const SCOPE = process.env.REACT_APP_SCOPE;
 
 function App() {
   const [token, setToken] = useState("");
@@ -91,16 +86,6 @@ function App() {
     );
   }
 
-  function LoginButton() {
-    return (
-      <a
-        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}
-      >
-        <button>Login to spotify</button>
-      </a>
-    );
-  }
-
   return (
     <div className="App">
       <div className="mainContainer">
@@ -108,26 +93,7 @@ function App() {
         <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>
           How to play?
         </h3>
-        <Modal isOpen={openHowTo} onClose={() => setOpenHowTo(false)}>
-          <title>How to use this webapp</title>
-          <p>
-            Simply click the login button, link your spotify account and then
-            click "get liked songs" this will then compare your liked songs
-            playlist on spotify with artists playing at glastonbury.
-          </p>
-          <p>It may take a few minutes but bear with it.</p>
-          <p>
-            Afterwards you will see a list of any artists you've liked that are
-            performing. click on these for more information such as stage, time
-            and which songs of theres you have liked.
-          </p>
-
-          <p>
-            We ask for permission to use some of your spotify account data, all
-            that happens in the background is pulling your playlists and then
-            the songs you have in the liked songs playlist{" "}
-          </p>
-        </Modal>
+        <Modal isOpen={openHowTo} onClose={() => setOpenHowTo(false)}></Modal>
         {isLoggedIn() ? (
           <LoggedInContent
             myGlastoArtists={myGlastoArtists}
