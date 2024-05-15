@@ -6,7 +6,6 @@ import LoggedInContent from "./components/loggedinContent";
 import LoginButton from "./components/LoginButton";
 import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
 import {
-  parseTracks,
   parsePlaylists,
   compareLists,
   parseGlastoData,
@@ -27,7 +26,9 @@ function App() {
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
-    const artists = parseGlastoData(glastoData);
+  const artists = {}
+  
+  parseGlastoData(glastoData, artists);
 
     if (!token && hash) {
       token = hash
@@ -58,11 +59,11 @@ function App() {
     setSelectedPlaylist(e.target.value);
   };
 
-  const handleFind = (e) => {
-    getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
-      setMySongs(parseTracks(tracks));
-    });
-  };
+  // const handleFind = (e) => {
+  //   getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
+  //     setMySongs(parseTracks(tracks));
+  //   });
+  // };
 
   function isLoggedIn() {
     return window.localStorage.getItem("token") !== null;
@@ -79,7 +80,9 @@ function App() {
             </option>
           ))}
         </select>
-        <button onClick={compareLists(token, selectedPlaylist, setMySongs)}>
+        <button
+          onClick={() => compareLists(token, selectedPlaylist, setMySongs)}
+        >
           Find artists playing at glasto
         </button>
       </>

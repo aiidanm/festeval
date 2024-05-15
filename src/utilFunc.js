@@ -32,8 +32,7 @@ const compareLists = (token, selectedPlaylist, setMySongs) => {
     });
   };
 
-  const parseGlastoData = (glastoData) => {
-    const artists = {};
+  const parseGlastoData = (glastoData,artists) => {
     glastoData.locations.forEach((location) => {
         location.events.forEach((event) => {
           const artistName = event.name;

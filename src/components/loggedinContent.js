@@ -23,7 +23,7 @@ export default function LoggedInContent({
     <>
       <div className="buttonContainer">
         <button onClick={logout}>Logout</button>
-        <button onClick={handleGetLikedSongs(token, setIsLoading, setMySongs)}>
+        <button onClick={() => {handleGetLikedSongs(token, setIsLoading, setMySongs)}}>
           Get liked songs
         </button>
       </div>
