@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
-
 import LoggedInContent from "./components/loggedinContent";
 import LoginButton from "./components/LoginButton";
 import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
@@ -11,7 +10,6 @@ import {
   parseGlastoData,
   compareToGlasto,
 } from "./utilFunc";
-
 import glastoData from "./Glasto.json";
 
 function App() {
@@ -26,9 +24,8 @@ function App() {
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
-  const artists = {}
-  
-  parseGlastoData(glastoData, artists);
+    const artists = {};
+    parseGlastoData(glastoData, artists);
 
     if (!token && hash) {
       token = hash
@@ -41,7 +38,6 @@ function App() {
       window.localStorage.setItem("token", token);
     }
     setToken(token);
-
     setFinalArtists(artists);
   }, []);
 
@@ -58,12 +54,6 @@ function App() {
   const handleChange = (e) => {
     setSelectedPlaylist(e.target.value);
   };
-
-  // const handleFind = (e) => {
-  //   getPlaylistsSongs(token, selectedPlaylist).then((tracks) => {
-  //     setMySongs(parseTracks(tracks));
-  //   });
-  // };
 
   function isLoggedIn() {
     return window.localStorage.getItem("token") !== null;

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -15,7 +15,7 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background-color: white;
+  background-color: var(--modal-background-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -25,6 +25,7 @@ const ModalContent = styled.div`
   justify-content: left;
   width: clamp(200px, 70vw, 500px);
   gap: 1rem;
+  color: var(--text-color);
 `;
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -33,25 +34,24 @@ const Modal = ({ isOpen, onClose, children }) => {
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        {children}
-        <title>How to use this webapp</title>
+        <h2>How to use this webapp</h2>
         <p>
-          Simply click the login button, link your spotify account and then
-          click "get liked songs" this will then compare your liked songs
-          playlist on spotify with artists playing at glastonbury.
+          Simply click the login button, link your Spotify account and then
+          click "get liked songs". This will then compare your liked songs
+          playlist on Spotify with artists playing at Glastonbury.
         </p>
         <p>It may take a few minutes but bear with it.</p>
         <p>
-          Afterwards you will see a list of any artists you've liked that are
-          performing. click on these for more information such as stage, time
-          and which songs of theres you have liked.
+          Afterwards, you will see a list of any artists you've liked that are
+          performing. Click on these for more information such as stage, time,
+          and which songs of theirs you have liked.
         </p>
-
         <p>
-          We ask for permission to use some of your spotify account data, all
+          We ask for permission to use some of your Spotify account data. All
           that happens in the background is pulling your playlists and then the
-          songs you have in the liked songs playlist{" "}
+          songs you have in the liked songs playlist.
         </p>
+        {children}
       </ModalContent>
     </ModalOverlay>
   );

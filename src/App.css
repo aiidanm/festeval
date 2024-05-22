@@ -1,50 +1,85 @@
-.App {
-  flex: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-  border: 5px solid black;
-  background-color: bisque;
+:root {
+  --primary-color: #1db954;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --secondary-text-color: #b3b3b3;
+  --button-hover-color: #1ed760;
+  --modal-background-color: #282828;
 }
-.mainContainer {
-  margin: 0 auto;
-  margin-top: 5%;
-  width: 20%;
-  height: 30%;
-  outline: orange;
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
-  background-color: bisque;
+}
+
+.mainContainer {
+  padding: 2rem;
+  border-radius: 10px;
+  background: #1e1e1e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .Festeval {
-  font-size: 6rem;
-  text-shadow: 5px 5px 2px white;
-  margin-top: 0px;
-  margin-bottom: 3rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
-button {
-  margin: 5px;
-  border: 3px solid rgb(86, 151, 70);
-  border-radius: 7%;
-  width: 80%;
-  height: 40%;
-  background-color: bisque;
-  font-family: Arial, Helvetica, sans-serif;
+.howToPlay {
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  margin-bottom: 2rem;
+  transition: color 0.3s;
+}
+
+.howToPlay:hover {
+  color: var(--primary-color);
+}
+
+select, button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: beige;
+  background-color: var(--button-hover-color);
+}
+
+button:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
 }
 
 .buttonContainer {
-  height: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .songList {
-  height: 50vh;
-  overflow-y: auto;
-  box-shadow: inset;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

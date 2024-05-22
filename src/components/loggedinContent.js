@@ -1,6 +1,5 @@
 import ArtistList from "./artistsList";
 import { useState } from "react";
-
 import { handleGetLikedSongs } from "../utilFunc";
 
 export default function LoggedInContent({
@@ -9,7 +8,6 @@ export default function LoggedInContent({
   token,
   setMySongs,
 }) {
-
   const [isLoading, setIsLoading] = useState(false);
 
   const logout = () => {
@@ -17,13 +15,15 @@ export default function LoggedInContent({
     window.localStorage.removeItem("token");
   };
 
-
-
   return (
     <>
       <div className="buttonContainer">
         <button onClick={logout}>Logout</button>
-        <button onClick={() => {handleGetLikedSongs(token, setIsLoading, setMySongs)}}>
+        <button
+          onClick={() => {
+            handleGetLikedSongs(token, setIsLoading, setMySongs);
+          }}
+        >
           Get liked songs
         </button>
       </div>
