@@ -24,8 +24,7 @@ export function getLikedSongs(token, offset = 0) {
       } else {
         return likedTracks;
       }
-    })
-    .catch((err) => err);
+    });
 }
 
 export function getAllPlaylists(token) {
