@@ -82,7 +82,7 @@ function App() {
   return (
     <div className="App">
       <div className="mainContainer">
-        <h1 className="Festeval">Testing</h1>
+        <h1 className="Festeval">Festeval</h1>
         <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>
           How to play?
         </h3>

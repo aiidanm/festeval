@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #1db954;
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --secondary-text-color: #b3b3b3;
-  --button-hover-color: #1ed760;
-  --modal-background-color: #282828;
+  --primary-color: #1e90ff;
+  --background-color: #f0f0f0;
+  --text-color: #000000;
+  --secondary-text-color: #666666;
+  --button-hover-color: #1c86ee;
+  --modal-background-color: #ffffff;
 }
 
 body {
@@ -25,8 +25,8 @@ body {
 .mainContainer {
   padding: 2rem;
   border-radius: 10px;
-  background: #1e1e1e;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
 }
 
