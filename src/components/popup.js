@@ -43,8 +43,12 @@ const Modal = ({ isOpen, onClose, children }) => {
         <p>It may take a few minutes but bear with it.</p>
         <p>
           Afterwards, you will see a list of any artists you've liked that are
-          performing. Click on these for more information such as stage, time,
-          and which songs of theirs you have liked.
+          performing. Click on these for more information such as stage and
+          time.
+        </p>
+        <p>
+          If an artist is highlighted then it means they clash with another
+          artist you also liked
         </p>
         <p>
           We ask for permission to use some of your Spotify account data. All

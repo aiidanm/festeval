@@ -118,3 +118,12 @@ button:focus, select:focus {
   margin: 0.5rem 0; /* Slight margin for individual p tags within artistDiv */
   padding-left: 10px; /* Slight indentation for all p tags within artistDiv */
 }
+
+.highlight {
+    background-color: yellow; /* Or any other highlight color */
+}
+
+ul {
+  list-style-type: none;
+  align-content: left;
+}

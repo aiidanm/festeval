@@ -84,7 +84,7 @@ function App() {
       <div className="mainContainer">
         <h1 className="Festeval">Festeval</h1>
         <h3 className="howToPlay" onClick={() => setOpenHowTo(true)}>
-          How to play?
+          How to use?
         </h3>
         <Modal isOpen={openHowTo} onClose={() => setOpenHowTo(false)}></Modal>
         {isLoggedIn() ? (
