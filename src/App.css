@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #1e90ff;
+  --primary-color: #0B3954;
   --background-color: #f0f0f0;
-  --text-color: #000000;
+  --text-color: #FF6663;
   --secondary-text-color: #666666;
-  --button-hover-color: #1c86ee;
+  --button-hover-color: #E0FF4F;
   --modal-background-color: #ffffff;
 }
 
@@ -120,7 +120,7 @@ button:focus, select:focus {
 }
 
 .highlight {
-    background-color: yellow; /* Or any other highlight color */
+    background-color: #FF6663; /* Or any other highlight color */
 }
 
 ul {
