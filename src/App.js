@@ -14,8 +14,7 @@ import glastoData from "./Glasto.json";
 
 function App() {
   const [token, setToken] = useState("");
-  const [playlistData, setPlaylistData] = useState();
-  const [selectedPlaylist, setSelectedPlaylist] = useState();
+
   const [finalArtists, setFinalArtists] = useState({});
   const [mySongs, setMySongs] = useState([]);
   const [myGlastoArtists, setMyGlastoArtists] = useState([]);
@@ -45,39 +44,15 @@ function App() {
     compareToGlasto(mySongs, finalArtists, setMyGlastoArtists);
   }, [mySongs]);
 
-  const handleGetAllPlaylists = () => {
-    getAllPlaylists(token).then((data) =>
-      setPlaylistData(parsePlaylists(data))
-    );
-  };
+  
 
-  const handleChange = (e) => {
-    setSelectedPlaylist(e.target.value);
-  };
+ 
 
   function isLoggedIn() {
     return window.localStorage.getItem("token") !== null;
   }
 
-  function PlaylistSelector() {
-    return (
-      <>
-        Select which playlist you want to find artists from!
-        <select name="playlists" id="playlists" onChange={handleChange}>
-          {playlistData.map((playlist) => (
-            <option key={playlist[1]} value={playlist[1]}>
-              {playlist[0]}
-            </option>
-          ))}
-        </select>
-        <button
-          onClick={() => compareLists(token, selectedPlaylist, setMySongs)}
-        >
-          Find artists playing at glasto
-        </button>
-      </>
-    );
-  }
+
 
   return (
     <div className="App">

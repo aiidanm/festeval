@@ -28,7 +28,7 @@ const groupedArtists = groupArtistsByDay(artistsInfo);
 
    return (
      <>
-       {myGlastoArtists.length !== 0 ? (
+       {myGlastoArtists ? (
          <h3>Total Artists you like playing: {myGlastoArtists.length}</h3>
        ) : null}
        {Object.keys(groupedArtists).map((day) => (

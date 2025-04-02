@@ -43,7 +43,6 @@ export function getAllPlaylists(token) {
 }
 
 export function getPlaylistsSongs(token, playlistCode) {
-  console.log(playlistCode);
   return axios
     .get(`https://api.spotify.com/v1/playlists/${playlistCode}`, {
       headers: {
