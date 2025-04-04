@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { clashChecker, updateMatchedArtists, parsePlaylists, compareLists } from "../utilFunc";
-import { getAllPlaylists } from "../apiReqs";
+import React, { useState } from "react";
+import { compareLists } from "../utilFunc";
 
 export default function PlaylistPage({
   handleGetLikedSongs,

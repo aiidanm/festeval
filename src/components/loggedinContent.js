@@ -56,9 +56,7 @@ export default function LoggedInContent({
         )}
       </div>
       <div className="songList">
-        {myGlastoArtists ? (
           <ArtistList myGlastoArtists={myGlastoArtists} />
-        ) : null}
         {isLoading ? <h3>working in background...</h3> : null}
       </div>
     </>

@@ -7,6 +7,11 @@
   --modal-background-color: #ffffff;
 }
 
+
+.logout-button{
+  position: absolute;
+ 
+}
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;

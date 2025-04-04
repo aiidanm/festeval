@@ -3,10 +3,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "./components/popup";
 import LoggedInContent from "./components/loggedinContent";
 import LoginButton from "./components/LoginButton";
-import { getAllPlaylists, getPlaylistsSongs } from "./apiReqs";
 import {
-  parsePlaylists,
-  compareLists,
   parseGlastoData,
   compareToGlasto,
 } from "./utilFunc";
