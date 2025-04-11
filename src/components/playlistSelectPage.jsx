@@ -7,11 +7,10 @@ export default function PlaylistPage({
   setIsLoading,
   setMySongs,
   setPlaylistToggle,
-  playlistData
+  playlistData,
+  setSearchDone
 }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState();
-
-
 
   const handleChange = (e) => {
     setSelectedPlaylist(e.target.value);
@@ -28,7 +27,7 @@ export default function PlaylistPage({
       </select>
       <button
         onClick={() =>
-          compareLists(token, selectedPlaylist, setMySongs, setIsLoading)
+          compareLists(token, selectedPlaylist, setMySongs, setIsLoading, setSearchDone)
         }
       >
         Find artists playing at glasto

@@ -1,4 +1,4 @@
-import { getLikedSongs, getPlaylistsSongs } from "./apiReqs";
+import { getLikedSongs, getPlaylistsSongs, getAllPlaylists } from "./apiReqs";
 
 const parseTracks = (tracks) => {
   return tracks.map((track) => {
@@ -6,21 +6,61 @@ const parseTracks = (tracks) => {
   });
 };
 
-const compareLists = (token, selectedPlaylist, setMySongs, setIsLoading) => {
+const compareLists = (
+  token,
+  selectedPlaylist,
+  setMySongs,
+  setIsLoading,
+  setSearchDone
+) => {
   setIsLoading(true);
+  setSearchDone(false);
   getPlaylistsSongs(token, selectedPlaylist)
     .then((tracks) => {
       setIsLoading(false);
+      setSearchDone(true);
       setMySongs(parseTracks(tracks));
     })
     .catch((err) => console.log(err));
 };
 
-const handleGetLikedSongs = (token, setIsLoading, setMySongs) => {
+const getEveryPlaylistsSongs = (
+  token,
+  setIsLoading,
+  setMySongs,
+  setSearchDone
+) => {
+getAllPlaylists(token).then((playlists) => {
+  let playlistIDS = playlists.map((playlist) => {
+    return [playlist.id]
+  })
+
+  let allSongs = []
+  for(let i = 0; i < 5; i++){
+    getPlaylistsSongs(token, playlistIDS[i]).then((result) => {
+      allSongs.push(result)
+      console.log(allSongs)
+    })
+  }
+})
+
+
+
+};
+
+const handleGetLikedSongs = (
+  token,
+  setIsLoading,
+  setMySongs,
+  setSearchDone
+) => {
   setIsLoading(true);
+  setSearchDone(false);
   getLikedSongs(token)
     .then((data) => {
       setIsLoading(false);
+      setSearchDone(true);
+
       setMySongs(parseTracks(data));
     })
     .catch((err) => console.log(err));
@@ -144,4 +184,5 @@ export {
   compareToGlasto,
   updateMatchedArtists,
   clashChecker,
+  getEveryPlaylistsSongs
 };
