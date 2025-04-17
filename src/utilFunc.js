@@ -36,11 +36,12 @@ getAllPlaylists(token).then((playlists) => {
   })
 
   let allSongs = []
-  for(let i = 0; i < 5; i++){
+  for(let i = 0; i < 2; i++){
     getPlaylistsSongs(token, playlistIDS[i]).then((result) => {
-      allSongs.push(result)
+      allSongs.push(parseTracks(result))
       console.log(allSongs)
     })
+
   }
 })
 
