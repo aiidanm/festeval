@@ -60,7 +60,7 @@ export default function LoggedInContent({
       </div>
       <button
         onClick={() => {
-          getEveryPlaylistsSongs(token)
+          getEveryPlaylistsSongs(token, setMySongs, setIsLoading, setSearchDone)
           }}
       >
         test

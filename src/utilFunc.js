@@ -26,10 +26,12 @@ const compareLists = (
 
 const getEveryPlaylistsSongs = (
   token,
-  setIsLoading,
   setMySongs,
+  setIsLoading,
   setSearchDone
 ) => {
+  setIsLoading(true)
+  
 getAllPlaylists(token).then((playlists) => {
   let playlistIDS = playlists.map((playlist) => {
     return [playlist.id]
@@ -39,10 +41,12 @@ getAllPlaylists(token).then((playlists) => {
   for(let i = 0; i < 2; i++){
     getPlaylistsSongs(token, playlistIDS[i]).then((result) => {
       allSongs.push(parseTracks(result))
-      console.log(allSongs)
     })
 
   }
+  setIsLoading(false)
+  setSearchDone(true)
+  setMySongs(allSongs)
 })
 
 
