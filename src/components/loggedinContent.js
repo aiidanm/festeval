@@ -38,6 +38,13 @@ export default function LoggedInContent({
           />
         ) : (
           <div className="select-button-container">
+             <LikedSong
+              handleGetLikedSongs={handleGetLikedSongs}
+              token={token}
+              setIsLoading={setIsLoading}
+              setMySongs={setMySongs}
+              setSearchDone={setSearchDone}
+            />
             <button
               onClick={() => {
                 getAllPlaylists(token).then((data) => {
@@ -48,23 +55,18 @@ export default function LoggedInContent({
             >
               Select a specific playlist instead
             </button>
-            <LikedSong
-              handleGetLikedSongs={handleGetLikedSongs}
-              token={token}
-              setIsLoading={setIsLoading}
-              setMySongs={setMySongs}
-              setSearchDone={setSearchDone}
-            />
-          </div>
-        )}
-      </div>
-      <button
+           
+            <button
         onClick={() => {
           getEveryPlaylistsSongs(token, setMySongs, setIsLoading, setSearchDone)
           }}
       >
-        test
+        Use all my playlists
       </button>
+          </div>
+        )}
+      </div>
+      
       <div className="songList">
         <ArtistList myGlastoArtists={myGlastoArtists} searchDone={searchDone} />
         {isLoading ? <h3>working in background...</h3> : null}

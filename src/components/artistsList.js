@@ -21,7 +21,6 @@ export default function ArtistList({ myGlastoArtists, searchDone }) {
 
   useEffect(() => {
     setArtistsInfo(updateMatchedArtists(myGlastoArtists));
-    console.log(myGlastoArtists);
   }, [myGlastoArtists]);
 
   const groupedArtists = groupArtistsByDay(artistsInfo);

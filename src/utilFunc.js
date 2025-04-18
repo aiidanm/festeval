@@ -32,22 +32,25 @@ const getEveryPlaylistsSongs = (
 ) => {
   setIsLoading(true)
   
-getAllPlaylists(token).then((playlists) => {
-  let playlistIDS = playlists.map((playlist) => {
-    return [playlist.id]
-  })
-
-  let allSongs = []
-  for(let i = 0; i < 2; i++){
-    getPlaylistsSongs(token, playlistIDS[i]).then((result) => {
-      allSongs.push(parseTracks(result))
-    })
-
-  }
-  setIsLoading(false)
-  setSearchDone(true)
-  setMySongs(allSongs)
-})
+  getAllPlaylists(token).then((playlists) => {
+    let playlistIDS = playlists.map((playlist) => playlist.id); // flatten from [[id]] to [id]
+  
+    let allArtists = new Set();
+  
+    let playlistPromises = playlistIDS.map((id) => {
+      return getPlaylistsSongs(token, id).then((result) => {
+        parseTracks(result).forEach((artist) => allArtists.add(artist));
+      });
+    });
+  
+    Promise.all(playlistPromises).then(() => {
+      let finalArr = Array.from(allArtists);
+      setIsLoading(false);
+      setSearchDone(true);
+      setMySongs(finalArr); // or maybe pass testArr into setMySongs(testArr)
+    });
+  });
+  
 
 
 
@@ -95,14 +98,15 @@ const parseGlastoData = (glastoData, artists) => {
   return artists;
 };
 
-const compareToGlasto = (mySongs, finalArtists, setMyGlastoArtists) => {
+const compareToGlasto = (mySongs, glastoArtists, setMyGlastoArtists) => {
+  console.log(mySongs)
   if (mySongs.length !== 0) {
-    const filteredKeys = Object.keys(finalArtists).filter((key) =>
+    const filteredKeys = Object.keys(glastoArtists).filter((key) =>
       mySongs.includes(key)
     );
     const filteredObjects = filteredKeys.map((key) => ({
       name: key,
-      info: finalArtists[key],
+      info: glastoArtists[key],
     }));
     console.log(filteredObjects);
     setMyGlastoArtists(filteredObjects);
