@@ -47,8 +47,13 @@ const getEveryPlaylistsSongs = (
         parseTracks(result).forEach((artist) => allArtists.add(artist));
       });
     });
+
+    const likedSongsPromise = getLikedSongs(token).then((likedTracks) => {
+      parseTracks(likedTracks).forEach((artist) => allArtists.add(artist));
+    });
+
   
-    Promise.all(playlistPromises).then(() => {
+    Promise.all([...playlistPromises, likedSongsPromise]).then(() => {
       let finalArr = Array.from(allArtists);
       setIsLoading(false);
       setSearchDone(true);

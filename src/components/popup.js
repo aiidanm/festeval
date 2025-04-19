@@ -50,7 +50,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         <p>
           3. Use all my Playlists. This is the longest method, it will crawl
           through each of your playlists and return any matches to the
-          Glastonbury lineup.
+          Glastonbury lineup. This also includes your liked songs
         </p>
 
         <p>
