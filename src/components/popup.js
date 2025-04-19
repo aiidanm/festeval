@@ -36,11 +36,23 @@ const Modal = ({ isOpen, onClose, children }) => {
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <h2>How to use this webapp</h2>
         <p>
-          Simply click the login button, link your Spotify account and then
-          click "get liked songs". This will then compare your liked songs
-          playlist on Spotify with artists playing at Glastonbury.
+          Simply click the login button, link your Spotify account and then you
+          will have three options.
         </p>
-        <p>It may take a few minutes but bear with it.</p>
+        <p>
+          1. Get liked songs: This will compare your "liked songs" on Spotify to
+          the Glastonbury 2025 lineup and present any matches
+        </p>
+        <p>
+          2. Use a specific playlist instead: This will allow you to select a
+          specific playlist you want to compare to the Glastonbury lineup.
+        </p>
+        <p>
+          3. Use all my Playlists. This is the longest method, it will crawl
+          through each of your playlists and return any matches to the
+          Glastonbury lineup.
+        </p>
+
         <p>
           Afterwards, you will see a list of any artists you've liked that are
           performing. Click on these for more information such as stage and

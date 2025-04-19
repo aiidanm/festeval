@@ -2,7 +2,12 @@ import { getLikedSongs, getPlaylistsSongs, getAllPlaylists } from "./apiReqs";
 
 const parseTracks = (tracks) => {
   return tracks.map((track) => {
-    return track.track.artists[0].name;
+    if(track.track.artists[0].name === null){
+      return null
+    } else {
+      return track.track.artists[0].name.toUpperCase();
+
+    }
   });
 };
 
@@ -83,7 +88,7 @@ const parsePlaylists = (rawPlaylists) => {
 const parseGlastoData = (glastoData, artists) => {
   glastoData.locations.forEach((location) => {
     location.events.forEach((event) => {
-      const artistName = event.name;
+      const artistName = event.name.toUpperCase();
       const artistInfo = {
         short: event.short,
         start: event.start,
@@ -99,7 +104,6 @@ const parseGlastoData = (glastoData, artists) => {
 };
 
 const compareToGlasto = (mySongs, glastoArtists, setMyGlastoArtists) => {
-  console.log(mySongs)
   if (mySongs.length !== 0) {
     const filteredKeys = Object.keys(glastoArtists).filter((key) =>
       mySongs.includes(key)
@@ -108,7 +112,6 @@ const compareToGlasto = (mySongs, glastoArtists, setMyGlastoArtists) => {
       name: key,
       info: glastoArtists[key],
     }));
-    console.log(filteredObjects);
     setMyGlastoArtists(filteredObjects);
   }
 };

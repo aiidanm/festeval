@@ -16,16 +16,11 @@ export default function LoggedInContent({
   const [playlistData, setPlaylistData] = useState([]);
   const [searchDone, setSearchDone] = useState(false)
 
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
+  
 
   return (
     <>
-      <button onClick={logout} className="logout-button">
-        Logout
-      </button>
+     
       <div className="loggedincontainer">
         {playlistToggle ? (
           <PlaylistPage

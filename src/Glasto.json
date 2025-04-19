@@ -1,13 +1,5 @@
 {
-	"copyright":"Licensed under a Creative Commons Attribution-NonCommercial 3.0 License https://creativecommons.org/licenses/by-nc/3.0/. Free for non-commercial use. Contact halvin@clashfinder.com for other uses.",
-	"modified":"2025-03-28 19:36",
-	"name":"Glastonbury Festival 2025",
-	"id":"g2025",
-	"url":"https://clashfinder.com/s/g2025/",
-	"printAdvisory":5,
-	"timezone":"Europe/London",
-	"tzOffset":3600,
-	"tzNote":"Start and end times are given in the timezone of the event. Offset by -tzOffset for UTC.",
+	
 	"locations":[
 		{
 			"name":"Pyramid Stage",

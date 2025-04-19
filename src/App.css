@@ -7,11 +7,19 @@
   --modal-background-color: #ffffff;
 }
 
-
-.logout-button{
-  position: absolute;
- 
+.logout-button {
+  align-self: flex-start; /* aligns to the left in flex column */
+  margin-bottom: 1rem;
+  padding: 6px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
+
+  
+
 
 .select-button-container{
   display: flex;

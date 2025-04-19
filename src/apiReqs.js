@@ -52,6 +52,7 @@ export function getPlaylistsSongs(token, playlistCode) {
       },
     })
     .then((data) => {
+      console.log(data.data.tracks.items)
       return data.data.tracks.items;
     });
 }
