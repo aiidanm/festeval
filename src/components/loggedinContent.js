@@ -11,10 +11,11 @@ export default function LoggedInContent({
   token,
   setMySongs,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({status: false, msg: ""});
   const [playlistToggle, setPlaylistToggle] = useState(false);
   const [playlistData, setPlaylistData] = useState([]);
   const [searchDone, setSearchDone] = useState(false)
+  const [progress, setProgress] = useState(0)
 
   
 
@@ -53,7 +54,7 @@ export default function LoggedInContent({
            
             <button
         onClick={() => {
-          getEveryPlaylistsSongs(token, setMySongs, setIsLoading, setSearchDone)
+          getEveryPlaylistsSongs(token, setMySongs, setIsLoading, setSearchDone, setProgress)
           }}
       >
         Use all my playlists
@@ -64,7 +65,7 @@ export default function LoggedInContent({
       
       <div className="songList">
         <ArtistList myGlastoArtists={myGlastoArtists} searchDone={searchDone} />
-        {isLoading ? <h3>working in background...</h3> : null}
+        {isLoading.status ? <h3>{isLoading.msg}</h3> : null}
       </div>
     </>
   );

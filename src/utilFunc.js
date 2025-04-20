@@ -1,12 +1,12 @@
+import { set } from "lodash";
 import { getLikedSongs, getPlaylistsSongs, getAllPlaylists } from "./apiReqs";
 
 const parseTracks = (tracks) => {
   return tracks.map((track) => {
-    if(track.track.artists[0].name === null){
-      return null
+    if (track.track.artists[0].name === null) {
+      return null;
     } else {
       return track.track.artists[0].name.toUpperCase();
-
     }
   });
 };
@@ -18,11 +18,11 @@ const compareLists = (
   setIsLoading,
   setSearchDone
 ) => {
-  setIsLoading(true);
+  setIsLoading({ status: true, msg: "comparing..." });
   setSearchDone(false);
   getPlaylistsSongs(token, selectedPlaylist)
     .then((tracks) => {
-      setIsLoading(false);
+      setIsLoading({ status: false, msg: "" });
       setSearchDone(true);
       setMySongs(parseTracks(tracks));
     })
@@ -33,37 +33,33 @@ const getEveryPlaylistsSongs = (
   token,
   setMySongs,
   setIsLoading,
-  setSearchDone
+  setSearchDone,
+  setProgress
 ) => {
-  setIsLoading(true)
-  
+  setIsLoading({ status: true, msg: "loading playlists..." });
+
   getAllPlaylists(token).then((playlists) => {
     let playlistIDS = playlists.map((playlist) => playlist.id); // flatten from [[id]] to [id]
-  
+
     let allArtists = new Set();
-  
+
     let playlistPromises = playlistIDS.map((id) => {
       return getPlaylistsSongs(token, id).then((result) => {
         parseTracks(result).forEach((artist) => allArtists.add(artist));
       });
     });
 
-    const likedSongsPromise = getLikedSongs(token).then((likedTracks) => {
+    const likedSongsPromise = getLikedSongs(token, 0, setIsLoading).then((likedTracks) => {
       parseTracks(likedTracks).forEach((artist) => allArtists.add(artist));
     });
 
-  
     Promise.all([...playlistPromises, likedSongsPromise]).then(() => {
       let finalArr = Array.from(allArtists);
-      setIsLoading(false);
+      setIsLoading({ status: false, msg: "" });
       setSearchDone(true);
       setMySongs(finalArr); // or maybe pass testArr into setMySongs(testArr)
     });
   });
-  
-
-
-
 };
 
 const handleGetLikedSongs = (
@@ -72,11 +68,14 @@ const handleGetLikedSongs = (
   setMySongs,
   setSearchDone
 ) => {
-  setIsLoading(true);
+  setIsLoading({
+    status: true,
+    msg: "loading liked songs, this may take awhile",
+  });
   setSearchDone(false);
   getLikedSongs(token)
     .then((data) => {
-      setIsLoading(false);
+      setIsLoading({ status: false, msg: "" });
       setSearchDone(true);
 
       setMySongs(parseTracks(data));
@@ -201,5 +200,5 @@ export {
   compareToGlasto,
   updateMatchedArtists,
   clashChecker,
-  getEveryPlaylistsSongs
+  getEveryPlaylistsSongs,
 };

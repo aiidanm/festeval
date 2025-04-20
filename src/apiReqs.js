@@ -6,7 +6,7 @@ export function testServerApi() {
     .then((res) => console.log(res));
 }
 
-export function getLikedSongs(token, offset = 0) {
+export function getLikedSongs(token, offset = 0, setIsLoading) {
   return axios
     .get(`https://api.spotify.com/v1/me/tracks?limit=50&offset=${offset}`, {
       headers: {
@@ -18,7 +18,8 @@ export function getLikedSongs(token, offset = 0) {
       const nextOffset = offset + 50;
 
       if (response.data.next) {
-        return getLikedSongs(token, nextOffset).then((nextTracks) => {
+        setIsLoading({status: true, msg: `loading liked songs ${offset}`})
+        return getLikedSongs(token, nextOffset, setIsLoading).then((nextTracks) => {
           return likedTracks.concat(nextTracks);
         });
       } else {
