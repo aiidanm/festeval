@@ -1,6 +1,10 @@
 import ArtistList from "./artistsList";
 import { useState } from "react";
-import { handleGetLikedSongs, parsePlaylists, getEveryPlaylistsSongs } from "../utilFunc";
+import {
+  handleGetLikedSongs,
+  parsePlaylists,
+  getEveryPlaylistsSongs,
+} from "../utilFunc";
 import LikedSong from "./likedSongspage";
 import PlaylistPage from "./playlistSelectPage";
 import { getAllPlaylists } from "../apiReqs";
@@ -11,19 +15,29 @@ export default function LoggedInContent({
   token,
   setMySongs,
 }) {
-  const [isLoading, setIsLoading] = useState({status: false, msg: ""});
+  const [isLoading, setIsLoading] = useState({ status: false, msg: "" });
   const [playlistToggle, setPlaylistToggle] = useState(false);
   const [playlistData, setPlaylistData] = useState([]);
-  const [searchDone, setSearchDone] = useState(false)
-  const [progress, setProgress] = useState(0)
-
-  
+  const [searchDone, setSearchDone] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   return (
     <>
-     
       <div className="loggedincontainer">
-        {playlistToggle ? (
+        <button
+          onClick={() => {
+            getEveryPlaylistsSongs(
+              token,
+              setMySongs,
+              setIsLoading,
+              setSearchDone,
+              setProgress
+            );
+          }}
+        >
+          Match me with Glasto Artists!
+        </button>
+        {/* {playlistToggle ? (
           <PlaylistPage
             handleGetLikedSongs={handleGetLikedSongs}
             token={token}
@@ -60,9 +74,9 @@ export default function LoggedInContent({
         Use all my playlists
       </button>
           </div>
-        )}
+        )} */}
       </div>
-      
+
       <div className="songList">
         <ArtistList myGlastoArtists={myGlastoArtists} searchDone={searchDone} />
         {isLoading.status ? <h3>{isLoading.msg}</h3> : null}
